@@ -16,6 +16,10 @@ import { RessourciumItemComponent } from './components/ressourcium-item/ressourc
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MoodFormComponent } from './components/mood-form/mood-form.component';
+import { KolumneComponent } from './components/kolumne/kolumne.component';
+import { KolumneItemComponent } from './components/kolumne-item/kolumne-item.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { KolumneItemDialogComponent } from './components/kolumne-item-dialog/kolumne-item-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,10 @@ import { MoodFormComponent } from './components/mood-form/mood-form.component';
     BlogPostComponent,
     ChallengeItemComponent,
     RessourciumItemComponent,
-    MoodFormComponent
+    MoodFormComponent,
+    KolumneComponent,
+    KolumneItemComponent,
+    KolumneItemDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,8 @@ import { MoodFormComponent } from './components/mood-form/mood-form.component';
     AngularFirestoreModule,
     BrowserAnimationsModule, // firestore
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

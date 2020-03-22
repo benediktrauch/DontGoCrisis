@@ -24,8 +24,6 @@ export class MenuComponent implements OnInit, AfterViewInit {
   @HostListener('window:scroll', ['$event'])
   handleScroll() {
     const windowScroll = window.pageYOffset;
-
-    console.log('windowScroll', windowScroll);
     if (windowScroll >= 100) {
       this.isScroll = true;
     } else {

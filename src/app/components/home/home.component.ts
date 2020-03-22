@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   };
 
   random = true;
+  challengeAccepted = false;
 
   constructor(private firebaseService: FirebaseService) { }
 
@@ -34,14 +35,14 @@ export class HomeComponent implements OnInit {
 
     const date = new Date();
     const days = Math.round((date.getTime() - 1584828878093) / (1000 * 60 * 60 * 24));
-    console.log('days', days);
+    // console.log('days', days);
 
     this.blog$ = this.firebaseService.getBlogData().valueChanges();
     this.category$ = this.firebaseService.getCategoryData().valueChanges();
     this.challenge$ = this.firebaseService.getChallengeData().valueChanges();
     this.mood$ = this.firebaseService.getMoodData().valueChanges();
     this.ressourcium$ = this.firebaseService.getRessourciumData().valueChanges();
-    this.challengeByCategory$ = this.firebaseService.getChallengeByCategory('').valueChanges();
+    this.challengeByCategory$ = this.firebaseService.getChallengeByCategory(this.challengeType).valueChanges();
 
 
     this.blog$.subscribe((res) => {
@@ -64,16 +65,16 @@ export class HomeComponent implements OnInit {
     //   //   console.log('element', element);
     //   // });
     // });
-    this.challengeByCategory$.subscribe((res) => {
-      // console.log('res', res.length);
-      this.dailyData.challenge = days % res.length;
-      if (this.random) {
-        this.dailyData.challenge = Math.floor(Math.random() * res.length);
-      }
-      // res.forEach(element => {
-      //   console.log('element', element);
-      // });
-    });
+    // this.challengeByCategory$.subscribe((res) => {
+    //   console.log('res', res);
+    //   this.dailyData.challenge = days % res.length;
+    //   if (this.random) {
+    //     this.dailyData.challenge = Math.floor(Math.random() * res.length);
+    //   }
+    //   // res.forEach(element => {
+    //   //   console.log('element', element);
+    //   // });
+    // });
 
     this.ressourcium$.subscribe((res) => {
       // console.log('res', res.length);
@@ -87,31 +88,50 @@ export class HomeComponent implements OnInit {
     });
 
     this.mood$.subscribe((res) => {
-      console.log('res', res);
+      // console.log('res', res);
       res.forEach(element => {
-        console.log('element', element);
+        // console.log('element', element);
       });
     });
 
-    this.category$.subscribe((res) => {
+    // this.category$.subscribe((res) => {
+    //   console.log('res', res);
+    //   res.forEach(element => {
+    //     console.log('element', element);
+    //   });
+    // });
+  }
+
+  handleChallengeMapping() {
+    const date = new Date();
+    const days = Math.round((date.getTime() - 1584828878093) / (1000 * 60 * 60 * 24));
+    this.challengeByCategory$ = this.firebaseService.getChallengeByCategory(this.challengeType).valueChanges();
+
+    this.challengeByCategory$.subscribe((res) => {
       console.log('res', res);
-      res.forEach(element => {
-        console.log('element', element);
-      });
+      this.dailyData.challenge = days % res.length;
+      if (this.random) {
+        this.dailyData.challenge = Math.floor(Math.random() * res.length);
+      }
     });
   }
 
   selectDoing(choice) {
     this.whatToDo = choice;
+    // this.challengeType = null;
+    this.challengeAccepted = false;
   }
 
   selectChallengeType(choice) {
     this.challengeType = choice;
+    this.handleChallengeMapping();
 
+    this.challengeAccepted = true;
   }
 
-  selectHelping(choice) {
-    this.helpingType = choice;
-  }
+  // selectHelping(choice) {
+  //   this.helpingType = choice;
+  //   this.challengeByCategory$ = this.firebaseService.getChallengeByCategory(this.challengeType).valueChanges();
+  // }
 
 }

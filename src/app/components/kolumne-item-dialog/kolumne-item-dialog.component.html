@@ -1,0 +1,11 @@
+<h2>"{{ story.name }} blieb zu Hause und... "</h2>
+<div class="story" [class]="">
+  <div class="text" *ngIf="story.text">
+    {{ story.text["de"] }}
+  </div>
+  <div class="expand">
+    <button mat-button color="accent" (click)="onNoClick()">
+      Schließen
+    </button>
+  </div>
+</div>

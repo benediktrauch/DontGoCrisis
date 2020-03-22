@@ -1,1 +1,7 @@
-<p>{{ challengeItem | json }}</p>
+<div class="challengeItem mat-elevation-z2">
+  <div class="headingSection">
+    <h3 *ngIf="challengeItem.category">#{{ challengeItem.category }}</h3>
+    <h1 *ngIf="challengeItem.titel">{{ challengeItem.titel["de"] }}</h1>
+  </div>
+  <p *ngIf="challengeItem.titel">{{ challengeItem.beschreibung["de"] }}</p>
+</div>

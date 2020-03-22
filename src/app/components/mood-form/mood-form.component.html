@@ -1,17 +1,30 @@
 <h2>Wie geht's dir?</h2>
 <div class="moodSection" *ngIf="!submitted">
-  <div class="moodItem" (click)="submitSentiment('sentiment_very_satisfied')">
+  <div
+    class="moodItem"
+    (click)="submitSentiment('sentiment_very_satisfied')"
+    id="very_satisfied"
+  >
     <mat-icon>sentiment_very_satisfied</mat-icon>
   </div>
-  <div class="moodItem" (click)="submitSentiment('sentiment_satisfied')">
+  <div
+    class="moodItem"
+    (click)="submitSentiment('sentiment_satisfied')"
+    id="satisfied"
+  >
     <mat-icon>sentiment_satisfied</mat-icon>
   </div>
-  <div class="moodItem" (click)="submitSentiment('sentiment_dissatisfied')">
+  <div
+    class="moodItem"
+    (click)="submitSentiment('sentiment_dissatisfied')"
+    id="dissatisfied"
+  >
     <mat-icon>sentiment_dissatisfied</mat-icon>
   </div>
   <div
     class="moodItem"
     (click)="submitSentiment('sentiment_very_dissatisfied')"
+    id="very_dissatisfied"
   >
     <mat-icon>sentiment_very_dissatisfied</mat-icon>
   </div>

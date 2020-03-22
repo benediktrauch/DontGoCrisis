@@ -1,0 +1,12 @@
+<div class="story" [class]="{ expanded: expanded }">
+  <div class="img"></div>
+  <div class="name">{{ story.name }}</div>
+  <div class="text" *ngIf="story.text && !expanded">
+    {{ story.text["de"].slice(0, 120) + "..." }}
+  </div>
+  <div class="expand">
+    <button mat-flat-button color="accent" (click)="toggleExpand()">
+      Mehr lesen
+    </button>
+  </div>
+</div>

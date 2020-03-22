@@ -48,26 +48,6 @@
   .vision {
     animation: 1.5s 1s fadeIn forwards;
   }
-
-  .storyList {
-    display: flex;
-    flex-wrap: wrap;
-    .storyItem {
-      width: 90%;
-      border-radius: 5px;
-      background-color: rgba($color: #ffffff, $alpha: 0.2);
-
-      @media screen and (min-width: 600px) {
-        width: 30%;
-      }
-      margin: 1em;
-
-      .name,
-      .text {
-        padding: 0.5em;
-      }
-    }
-  }
 }
 
 @keyframes fadeIn {

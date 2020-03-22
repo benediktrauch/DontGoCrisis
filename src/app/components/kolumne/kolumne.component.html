@@ -1,0 +1,21 @@
+<h1>#DontGoCrisis</h1>
+<h2>"Eine:r blieb zu Hause und... "</h2>
+
+<div class="storyList">
+  <app-kolumne-item
+    class="storyItem mat-elevation-z2"
+    [class]="{ long: story.text?.de?.length > 1000 }"
+    *ngFor="let story of kolumne$ | async"
+    [story]="story"
+  ></app-kolumne-item>
+  <!-- <div class="storyItem  mat-elevation-z2">
+    <div class="img"></div>
+    <div class="name">{{ story.name }}</div>
+    <div class="text" *ngIf="story.text">
+      {{ story.text["de"].slice(0, 120) + "..." }}
+    </div>
+    <div class="expand">
+      Mehr lesen
+    </div>
+  </div> -->
+</div>

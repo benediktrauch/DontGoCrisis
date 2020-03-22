@@ -1,0 +1,14 @@
+.ressourciumItem {
+  margin: 1em;
+  padding: 1em;
+  font-size: 2.5em;
+  line-height: 2em;
+  border-radius: 1em;
+  text-align: center;
+  background-image: linear-gradient(
+    135deg,
+    rgba($color: #ffcf0d, $alpha: 0.5),
+    rgba($color: #e8710c, $alpha: 0.5),
+    rgba($color: #ff590d, $alpha: 0.5)
+  );
+}

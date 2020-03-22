@@ -1,0 +1,26 @@
+.challengeItem {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 1em;
+  // transform: rotateX(90deg);
+  animation: zoomIn 0.5s forwards;
+}
+@keyframes zoomIn {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes flipCard {
+  from {
+    transform: rotateX(90deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}

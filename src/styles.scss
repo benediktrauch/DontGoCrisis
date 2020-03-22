@@ -6,10 +6,13 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Rubik", Roboto, "Helvetica Neue", sans-serif;
   background: #fff;
 }
 
+.mat-typography {
+  font-family: "Rubik", Roboto, "Helvetica Neue", sans-serif;
+}
 // html:not([data-scroll="0"]) {
 //   nav {
 //     .top {

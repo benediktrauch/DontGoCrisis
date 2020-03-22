@@ -36,14 +36,23 @@
       </button>
     </div>
 
-    <div class="challengeCategory" *ngIf="whatToDo === 'do'">
+    <div
+      class="challengeCategory"
+      *ngIf="whatToDo === 'do' && !challengeAccepted"
+    >
       <div
         class="challengeCategoryItem mat-elevation-z2"
         (click)="selectChallengeType('dontgocrazymeal')"
       >
         <h2>Make a Meal</h2>
         <h3>#dontgocrazymeal</h3>
-        <button mat-raised-button color="accent">Challenge accepted</button>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="selectChallengeType('dontgocrazymeal')"
+        >
+          Challenge accepted
+        </button>
       </div>
       <div
         class="challengeCategoryItem mat-elevation-z2"
@@ -51,7 +60,13 @@
       >
         <h2>Make a Style</h2>
         <h3>#dontgocrazystyle</h3>
-        <button mat-raised-button color="accent">Challenge accepted</button>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="selectChallengeType('dontgocrazystyle')"
+        >
+          Challenge accepted
+        </button>
       </div>
       <div
         class="challengeCategoryItem mat-elevation-z2"
@@ -59,7 +74,13 @@
       >
         <h2>Make a Game / Sound</h2>
         <h3>#dontgocrazygame</h3>
-        <button mat-raised-button color="accent">Challenge accepted</button>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="selectChallengeType('dontgocrazygame')"
+        >
+          Challenge accepted
+        </button>
       </div>
       <div
         class="challengeCategoryItem mat-elevation-z2"
@@ -67,46 +88,79 @@
       >
         <h2>Make a Move</h2>
         <h3>#dontgocrazymove</h3>
-        <button mat-raised-button color="accent">Challenge accepted</button>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="selectChallengeType('dontgocrazymove')"
+        >
+          Challenge accepted
+        </button>
       </div>
     </div>
 
-    <!--
-      Kategorie A. Essen: Make a Meal #dontgocrazymeal
-      Kategorie B. Style: Make a Style #dontgocrazystyle
-      Kategorie C. Play: Make a Game/ Sound  #dontgocrazygame
-      Kategorie D. Sports: Make a Move #dontgocrazymove
-      -->
+    <div
+      class="challengeCategory"
+      *ngIf="whatToDo === 'help' && !challengeAccepted"
+    >
+      <div
+        class="challengeCategoryItem mat-elevation-z2"
+        (click)="selectChallengeType('dontgocrazyshareameal')"
+      >
+        <h2>Feed</h2>
+        <h3>#dontgocrazyshareameal</h3>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="selectChallengeType('dontgocrazyshareameal')"
+        >
+          Challenge accepted
+        </button>
+      </div>
 
-    <div class="buttonRow" *ngIf="whatToDo === 'help'">
-      <button
-        mat-raised-button
-        color=""
-        (click)="selectHelping('dontgocrazyshareameal')"
+      <div
+        class="challengeCategoryItem mat-elevation-z2"
+        (click)="selectChallengeType('dontgocrazyask')"
       >
-        Feed
-      </button>
-      <button
-        mat-raised-button
-        color=""
-        (click)="selectHelping('dontgocrazyask')"
+        <h2>Advice</h2>
+        <h3>#dontgocrazyask</h3>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="selectChallengeType('dontgocrazyask')"
+        >
+          Challenge accepted
+        </button>
+      </div>
+
+      <div
+        class="challengeCategoryItem mat-elevation-z2"
+        (click)="selectChallengeType('dontgocrazylisten')"
       >
-        Advice
-      </button>
-      <button
-        mat-raised-button
-        color=""
-        (click)="selectHelping('dontgocrazylisten')"
+        <h2>Listen</h2>
+        <h3>#dontgocrazylisten</h3>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="selectChallengeType('dontgocrazylisten')"
+        >
+          Challenge accepted
+        </button>
+      </div>
+
+      <div
+        class="challengeCategoryItem mat-elevation-z2"
+        (click)="selectChallengeType('dontgocrazyshopforsomeone')"
       >
-        Listen
-      </button>
-      <button
-        mat-raised-button
-        color=""
-        (click)="selectHelping('dontgocrazyshopforsomeone')"
-      >
-        Help
-      </button>
+        <h2>Help</h2>
+        <h3>#dontgocrazyshopforsomeone</h3>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="selectChallengeType('dontgocrazyshopforsomeone')"
+        >
+          Challenge accepted
+        </button>
+      </div>
     </div>
 
     <!--
@@ -134,26 +188,36 @@
   </div>
 
   <div class="know" *ngIf="whatToDo === 'know'">
-    <!-- <h2>Blogpost</h2> -->
-    <app-blog-post
-      *ngFor="let blogPost of blog$ | async"
-      [blogPost]="blogPost"
-    ></app-blog-post>
+    <div *ngFor="let blogPost of blog$ | async; index as i">
+      <app-blog-post
+        *ngIf="i == dailyData.blog"
+        [blogPost]="blogPost"
+      ></app-blog-post>
+    </div>
   </div>
-  <!-- <h2>Kategorien</h2>
-  <div *ngFor="let categoryItem of category$ | async">
-    {{ categoryItem | json }}
-  </div> -->
 
-  <h2>Challenges</h2>
-  <h3>#dontgocrazychallenge</h3>
-  <app-challenge-item
-    [challengeItem]="challengeItem"
-    *ngFor="let challengeItem of challengeByCategory$ | async"
-  ></app-challenge-item>
+  <div
+    class="challenge"
+    *ngIf="
+      (whatToDo === 'do' || whatToDo === 'help') &&
+      challengeType &&
+      challengeAccepted
+    "
+  >
+    <!-- <h2>Challenges</h2> -->
+    <h3>#dontgocrazychallenge</h3>
+    <div *ngFor="let challengeItem of challengeByCategory$ | async; index as i">
+      <app-challenge-item
+        [challengeItem]="challengeItem"
+        *ngIf="i == dailyData.challenge"
+      ></app-challenge-item>
+    </div>
+  </div>
 
-  <h2>Mood</h2>
-  <div *ngFor="let moodItem of mood$ | async">
-    {{ moodItem | json }}
+  <div *ngIf="false">
+    <h2>Mood</h2>
+    <div *ngFor="let moodItem of mood$ | async">
+      {{ moodItem | json }}
+    </div>
   </div>
 </div>

@@ -1,0 +1,21 @@
+.storyList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .storyItem {
+    width: 90%;
+    border-radius: 5px;
+    background-color: rgba($color: #ffffff, $alpha: 0.2);
+    margin: 1em;
+    padding: 1em;
+    background-color: #ffffa5;
+
+    @media screen and (min-width: 645px) {
+      width: 40%;
+    }
+    @media screen and (min-width: 980px) {
+      width: 27%;
+    }
+  }
+}
