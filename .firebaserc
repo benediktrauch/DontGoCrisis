@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "krise-als-chance"
+  },
+  "targets": {
+    "krise-als-chance": {
+      "hosting": {
+        "KriseAlsChance": [
+          "krise-als-chance"
+        ]
+      }
+    }
+  }
+}

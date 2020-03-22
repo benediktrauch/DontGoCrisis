@@ -1,0 +1,28 @@
+<div class="blogPostWrapper">
+  <div class="headerImg">
+    <img
+      src="https://cdn.pixabay.com/photo/2020/03/15/15/41/medical-4934010_960_720.jpg"
+      *ngIf="!blogPost.bild"
+    />
+    <img [src]="blogPost.bild" *ngIf="blogPost.bild" />
+  </div>
+  <div class="headingSection">
+    <p *ngIf="blogPost.date">{{ blogPost.date | date }}</p>
+    <h1 *ngIf="blogPost.titel">{{ blogPost.titel["de"] }}</h1>
+  </div>
+
+  <div class="contentSection">
+    <p *ngIf="blogPost.text">{{ blogPost.text["de"] }}</p>
+  </div>
+
+  <div class="sources">
+    <a
+      [href]="source"
+      target="_blank"
+      rel="noopener noreferrer"
+      *ngFor="let source of blogPost.quellen"
+      >{{ source }}</a
+    >
+  </div>
+</div>
+<p>{{ blogPost | json }}</p>

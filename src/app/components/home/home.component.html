@@ -1,0 +1,159 @@
+<div class="homeWrapper">
+  <div class="wasGeht">
+    <h2>Was geht heute?</h2>
+    <div class="buttonRow" [class]="{ selected: whatToDo }">
+      <button
+        mat-raised-button
+        [color]="whatToDo === 'self' ? 'primary' : ''"
+        [class]="{ active: whatToDo === 'self' }"
+        (click)="selectDoing('self')"
+      >
+        Was für mich tun
+      </button>
+      <button
+        mat-raised-button
+        [color]="whatToDo === 'help' ? 'primary' : ''"
+        [class]="{ active: whatToDo === 'help' }"
+        (click)="selectDoing('help')"
+      >
+        Was helfen
+      </button>
+      <button
+        mat-raised-button
+        [color]="whatToDo === 'do' ? 'primary' : ''"
+        [class]="{ active: whatToDo === 'do' }"
+        (click)="selectDoing('do')"
+      >
+        Was machen
+      </button>
+      <button
+        mat-raised-button
+        [color]="whatToDo === 'know' ? 'primary' : ''"
+        [class]="{ active: whatToDo === 'know' }"
+        (click)="selectDoing('know')"
+      >
+        Was wissen
+      </button>
+    </div>
+
+    <div class="challengeCategory" *ngIf="whatToDo === 'do'">
+      <div
+        class="challengeCategoryItem mat-elevation-z2"
+        (click)="selectChallengeType('dontgocrazymeal')"
+      >
+        <h2>Make a Meal</h2>
+        <h3>#dontgocrazymeal</h3>
+        <button mat-raised-button color="accent">Challenge accepted</button>
+      </div>
+      <div
+        class="challengeCategoryItem mat-elevation-z2"
+        (click)="selectChallengeType('dontgocrazystyle')"
+      >
+        <h2>Make a Style</h2>
+        <h3>#dontgocrazystyle</h3>
+        <button mat-raised-button color="accent">Challenge accepted</button>
+      </div>
+      <div
+        class="challengeCategoryItem mat-elevation-z2"
+        (click)="selectChallengeType('dontgocrazygame')"
+      >
+        <h2>Make a Game / Sound</h2>
+        <h3>#dontgocrazygame</h3>
+        <button mat-raised-button color="accent">Challenge accepted</button>
+      </div>
+      <div
+        class="challengeCategoryItem mat-elevation-z2"
+        (click)="selectChallengeType('dontgocrazymove')"
+      >
+        <h2>Make a Move</h2>
+        <h3>#dontgocrazymove</h3>
+        <button mat-raised-button color="accent">Challenge accepted</button>
+      </div>
+    </div>
+
+    <!--
+      Kategorie A. Essen: Make a Meal #dontgocrazymeal
+      Kategorie B. Style: Make a Style #dontgocrazystyle
+      Kategorie C. Play: Make a Game/ Sound  #dontgocrazygame
+      Kategorie D. Sports: Make a Move #dontgocrazymove
+      -->
+
+    <div class="buttonRow" *ngIf="whatToDo === 'help'">
+      <button
+        mat-raised-button
+        color=""
+        (click)="selectHelping('dontgocrazyshareameal')"
+      >
+        Feed
+      </button>
+      <button
+        mat-raised-button
+        color=""
+        (click)="selectHelping('dontgocrazyask')"
+      >
+        Advice
+      </button>
+      <button
+        mat-raised-button
+        color=""
+        (click)="selectHelping('dontgocrazylisten')"
+      >
+        Listen
+      </button>
+      <button
+        mat-raised-button
+        color=""
+        (click)="selectHelping('dontgocrazyshopforsomeone')"
+      >
+        Help
+      </button>
+    </div>
+
+    <!--
+      Kategorie A. Feed: Share a Meal #dontgocrazyshareameal
+      Kategorie B. Advice: Tipp geben #dontgocrazyask
+      Kategorie C. Listen: Einfach mal zuhören  #dontgocrazylisten
+      Kategorie D. Help: Run an errand #dontgocrazyshopforsomeone
+      -->
+  </div>
+
+  <div class="self" *ngIf="whatToDo === 'self'">
+    <h2>Motivation / Positive Reflexion</h2>
+    <p>
+      Im Alltag erleben wir viele schöne Dinge, aber sind uns dessen oft nicht
+      bewusst. Deswegen ist es wichtig seine eigenen Ressourcen zu kennen. Die
+      folgenden Fragen und Anregungen können dabei helfen, zum Erinnern und
+      Nachdenken anregen.
+    </p>
+    <div *ngFor="let ressourciumItem of ressourcium$ | async; index as i">
+      <app-ressourcium-item
+        *ngIf="i == dailyData.ressourcium"
+        [ressourciumItem]="ressourciumItem"
+      ></app-ressourcium-item>
+    </div>
+  </div>
+
+  <div class="know" *ngIf="whatToDo === 'know'">
+    <!-- <h2>Blogpost</h2> -->
+    <app-blog-post
+      *ngFor="let blogPost of blog$ | async"
+      [blogPost]="blogPost"
+    ></app-blog-post>
+  </div>
+  <!-- <h2>Kategorien</h2>
+  <div *ngFor="let categoryItem of category$ | async">
+    {{ categoryItem | json }}
+  </div> -->
+
+  <h2>Challenges</h2>
+  <h3>#dontgocrazychallenge</h3>
+  <app-challenge-item
+    [challengeItem]="challengeItem"
+    *ngFor="let challengeItem of challengeByCategory$ | async"
+  ></app-challenge-item>
+
+  <h2>Mood</h2>
+  <div *ngFor="let moodItem of mood$ | async">
+    {{ moodItem | json }}
+  </div>
+</div>

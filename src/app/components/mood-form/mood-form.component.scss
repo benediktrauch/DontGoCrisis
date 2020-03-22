@@ -1,0 +1,14 @@
+.moodSection {
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 100%;
+  .moodItem {
+    height: 5em;
+    padding: 1em;
+    width: 4em;
+    cursor: pointer;
+    .mat-icon {
+      font-size: 5em;
+    }
+  }
+}
