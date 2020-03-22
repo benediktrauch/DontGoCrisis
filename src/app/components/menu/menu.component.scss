@@ -107,8 +107,29 @@ nav {
   .social {
     position: fixed;
     margin: 1em;
-    top: 0;
+    top: 0.5em;
     right: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 450px) {
+      display: none;
+    }
+    #lang {
+      color: #122eb3;
+      width: 2em;
+      color: #ff8900;
+      margin: 0.5em;
+    }
+    #twitter,
+    #github {
+      width: 2em;
+      fill: #ff8900;
+      color: #ff8900;
+      display: block;
+      margin: 0.5em;
+    }
   }
 }
 

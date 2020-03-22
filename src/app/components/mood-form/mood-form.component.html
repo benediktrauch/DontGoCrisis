@@ -1,9 +1,13 @@
-<h2>Wie geht's dir?</h2>
-<div class="moodSection" *ngIf="!submitted">
+<h2>Wie fühlst du dich gerade?</h2>
+<div class="moodSection">
   <div
     class="moodItem"
     (click)="submitSentiment('sentiment_very_satisfied')"
     id="very_satisfied"
+    *ngIf="
+      !submitted ||
+      (submitted && submitedSentiment === 'sentiment_very_satisfied')
+    "
   >
     <mat-icon>sentiment_very_satisfied</mat-icon>
   </div>
@@ -11,6 +15,9 @@
     class="moodItem"
     (click)="submitSentiment('sentiment_satisfied')"
     id="satisfied"
+    *ngIf="
+      !submitted || (submitted && submitedSentiment === 'sentiment_satisfied')
+    "
   >
     <mat-icon>sentiment_satisfied</mat-icon>
   </div>
@@ -18,6 +25,10 @@
     class="moodItem"
     (click)="submitSentiment('sentiment_dissatisfied')"
     id="dissatisfied"
+    *ngIf="
+      !submitted ||
+      (submitted && submitedSentiment === 'sentiment_dissatisfied')
+    "
   >
     <mat-icon>sentiment_dissatisfied</mat-icon>
   </div>
@@ -25,11 +36,37 @@
     class="moodItem"
     (click)="submitSentiment('sentiment_very_dissatisfied')"
     id="very_dissatisfied"
+    *ngIf="
+      !submitted ||
+      (submitted && submitedSentiment === 'sentiment_very_dissatisfied')
+    "
   >
     <mat-icon>sentiment_very_dissatisfied</mat-icon>
   </div>
 </div>
 
-<div class="moodSection" *ngIf="submitted">
-  <h3>Danke!</h3>
+<div class="moodSectionAfter" *ngIf="submitted">
+  <h2>Danke!</h2>
+  <h3
+    *ngIf="
+      submitedSentiment === 'sentiment_very_satisfied' ||
+      submitedSentiment === 'sentiment_satisfied'
+    "
+  >
+    <a [routerLink]="['/whats-up-today']"
+      >Wie wärs mit einer Herausforderung?</a
+    >
+  </h3>
+  <a
+    href="https://www.hilfetelefon.de/"
+    target="_blank"
+    rel="noopener noreferrer"
+    *ngIf="
+      submitedSentiment === 'sentiment_dissatisfied' ||
+      submitedSentiment === 'sentiment_very_dissatisfied'
+    "
+  >
+    Es tut uns leid zu hören, dass es Dir nicht gut geht. <br />
+    Es gibt viele Anlaufstellen an die Du dich wenden kannst.
+  </a>
 </div>

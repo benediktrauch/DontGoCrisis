@@ -1,18 +1,25 @@
 .landingWrapper {
   display: grid;
   // grid-template-rows: minmax(100vh, auto);
+  gap: 2em;
 
   .landingSection {
     // min-height: 100vh;
     padding: 1em;
+    display: grid;
 
     @media screen and (min-width: 600px) {
       padding: 2em 3em;
+      gap: 6em;
     }
 
     &:nth-of-type(2) {
       background-color: rgba($color: #ffffff, $alpha: 0.2);
     }
+  }
+
+  .introText {
+    display: block;
   }
 
   .about,
@@ -32,22 +39,138 @@
       display: flex;
       justify-content: center;
       align-self: center;
+      position: relative;
+
       img {
         object-fit: cover;
-        width: 80%;
+        max-width: 50%;
+        height: 25em;
+        z-index: 1;
+        filter: brightness(95%);
+      }
+
+      .background {
+        background-color: #ff8900;
+        width: 50%;
+        height: 115%;
+        transform: translate3d(10px, -20px, 0);
+        position: absolute;
+      }
+      .stripes {
+        width: 45%;
+        height: 115%;
+        transform: translate3d(65px, -35px, 0) rotate(0deg);
+        position: absolute;
+        background: repeating-linear-gradient(
+          90deg,
+          #fff0,
+          #fff0 10px,
+          #ffc30d 10px,
+          #ffc30d 20px
+        );
+      }
+      @media screen and (max-width: 600px) {
+        grid-row-start: 2;
+        .stripes,
+        .background {
+          display: none;
+        }
       }
     }
     .content {
       display: flex;
       flex-direction: column;
+      align-content: center;
       align-self: center;
+
+      p {
+        font-size: 1.6em;
+        line-height: 2em;
+      }
+
+      @media screen and (max-width: 600px) {
+        text-align: center;
+      }
     }
   }
   .about {
-    animation: 1.5s 0.25s fadeIn forwards;
+    animation: 1.5s 1s fadeIn forwards;
+    .image {
+      .background {
+        height: 105%;
+        width: 40%;
+      }
+
+      .stripes {
+        height: 105%;
+        width: 40%;
+      }
+    }
   }
   .vision {
-    animation: 1.5s 1s fadeIn forwards;
+    animation: 1.5s 0.25s fadeIn forwards;
+    .content {
+      text-align: right;
+      @media screen and (max-width: 600px) {
+        text-align: center;
+      }
+    }
+    .image {
+      .background {
+        width: 50%;
+        height: 110%;
+      }
+      .stripes {
+        width: 45%;
+        height: 120%;
+        transform: translate3d(65px, -35px, 0) rotate(0deg);
+        position: absolute;
+        background: repeating-linear-gradient(
+          90deg,
+          #fff0,
+          #fff0 10px,
+          #e8a60c 10px,
+          #e8a60c 20px
+        );
+      }
+      @media screen and (max-width: 600px) {
+        .stripes,
+        .background {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .roadmap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .roadmapItem {
+      padding: 0.7em 1em;
+      color: #e8a60c;
+      border: 1px solid #e8a60c;
+      border-radius: 2em;
+      margin: 1em;
+    }
+  }
+
+  .hackathon {
+    background: #eaeaea;
+    .project {
+      svg {
+        width: 30vw;
+        max-width: 50vw;
+        height: auto;
+        margin: 2em;
+      }
+      .projectRow {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        flex-wrap: wrap;
+      }
+    }
   }
 }
 

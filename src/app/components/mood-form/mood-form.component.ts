@@ -9,6 +9,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 export class MoodFormComponent implements OnInit {
 
   submitted = false;
+  submitedSentiment = '';
 
   constructor(private firebaseService: FirebaseService) { }
 
@@ -16,6 +17,8 @@ export class MoodFormComponent implements OnInit {
   }
 
   submitSentiment(sentimentStr) {
+    this.submitedSentiment = sentimentStr;
+
     console.log('sentiment', sentimentStr);
     this.firebaseService.submitSentiment({ sentiment: sentimentStr, timestamp: new Date().getTime() })
       .then(res => {

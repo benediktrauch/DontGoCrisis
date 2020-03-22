@@ -7,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
+  showAllText = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggleShowAllText() {
+    this.showAllText = !this.showAllText;
+  }
 }

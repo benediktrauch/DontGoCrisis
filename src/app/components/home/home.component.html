@@ -1,36 +1,39 @@
 <div class="homeWrapper">
+  <div class="headerImg">
+    <img src="assets/WasGeht_V1.png" alt="" />
+  </div>
   <div class="wasGeht">
     <h2>Was geht heute?</h2>
     <div class="buttonRow" [class]="{ selected: whatToDo }">
       <button
         mat-raised-button
-        [color]="whatToDo === 'self' ? 'primary' : ''"
         [class]="{ active: whatToDo === 'self' }"
         (click)="selectDoing('self')"
+        class="first"
       >
         Was für mich tun
       </button>
       <button
         mat-raised-button
-        [color]="whatToDo === 'help' ? 'primary' : ''"
         [class]="{ active: whatToDo === 'help' }"
         (click)="selectDoing('help')"
+        class="second"
       >
         Was helfen
       </button>
       <button
         mat-raised-button
-        [color]="whatToDo === 'do' ? 'primary' : ''"
         [class]="{ active: whatToDo === 'do' }"
         (click)="selectDoing('do')"
+        class="third"
       >
         Was machen
       </button>
       <button
         mat-raised-button
-        [color]="whatToDo === 'know' ? 'primary' : ''"
         [class]="{ active: whatToDo === 'know' }"
         (click)="selectDoing('know')"
+        class="fourth"
       >
         Was wissen
       </button>
@@ -187,8 +190,12 @@
     </div>
 
     <div class="nextButton">
-      <button mat-flat-button (click)="getNew('ressourcium', ressourcium$)">
-        Ich will ein anderes
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="getNew('ressourcium', ressourcium$)"
+      >
+        Ich will ein andere Anregung
       </button>
     </div>
   </div>
@@ -202,7 +209,11 @@
     </div>
 
     <div class="nextButton">
-      <button mat-flat-button (click)="getNew('blog', ressourcium$)">
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="getNew('blog', ressourcium$)"
+      >
         Ich will mehr wissen
       </button>
     </div>

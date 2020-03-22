@@ -5,11 +5,16 @@
   .moodItem {
     height: 5em;
     padding: 1em;
-    width: 4em;
+    width: 5em;
     cursor: pointer;
     .mat-icon {
       font-size: 5em;
     }
+  }
+
+  h3 {
+    font-size: 2em;
+    line-height: 2em;
   }
 
   #very_satisfied {
@@ -27,4 +32,12 @@
   #very_dissatisfied {
     color: #122eb3;
   }
+}
+
+.moodSectionAfter {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  text-align: center;
 }
