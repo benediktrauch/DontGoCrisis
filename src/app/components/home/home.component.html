@@ -185,6 +185,12 @@
         [ressourciumItem]="ressourciumItem"
       ></app-ressourcium-item>
     </div>
+
+    <div class="nextButton">
+      <button mat-flat-button (click)="getNew('ressourcium', ressourcium$)">
+        Ich will ein anderes
+      </button>
+    </div>
   </div>
 
   <div class="know" *ngIf="whatToDo === 'know'">
@@ -193,6 +199,12 @@
         *ngIf="i == dailyData.blog"
         [blogPost]="blogPost"
       ></app-blog-post>
+    </div>
+
+    <div class="nextButton">
+      <button mat-flat-button (click)="getNew('blog', ressourcium$)">
+        Ich will mehr wissen
+      </button>
     </div>
   </div>
 

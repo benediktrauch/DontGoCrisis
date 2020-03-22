@@ -26,6 +26,13 @@ export class HomeComponent implements OnInit {
     ressourcium: 0
   };
 
+
+  length = {
+    blog: 0,
+    challenge: 0,
+    ressourcium: 0
+  };
+
   random = true;
   challengeAccepted = false;
 
@@ -47,6 +54,7 @@ export class HomeComponent implements OnInit {
 
     this.blog$.subscribe((res) => {
       // console.log('res', res.length);
+      this.length.blog = res.length;
       this.dailyData.blog = days % res.length;
       if (this.random) {
         this.dailyData.blog = Math.floor(Math.random() * res.length);
@@ -77,7 +85,7 @@ export class HomeComponent implements OnInit {
     // });
 
     this.ressourcium$.subscribe((res) => {
-      // console.log('res', res.length);
+      this.length.ressourcium = res.length;
       this.dailyData.ressourcium = days % res.length;
       if (this.random) {
         this.dailyData.ressourcium = Math.floor(Math.random() * res.length);
@@ -109,11 +117,22 @@ export class HomeComponent implements OnInit {
 
     this.challengeByCategory$.subscribe((res) => {
       console.log('res', res);
+      this.length.challenge = res.length;
       this.dailyData.challenge = days % res.length;
       if (this.random) {
         this.dailyData.challenge = Math.floor(Math.random() * res.length);
       }
     });
+  }
+
+  getNew(resource, data) {
+    const date = new Date();
+    const days = Math.round((date.getTime() - 1584828878093) / (1000 * 60 * 60 * 24));
+    const lastNumber = this.dailyData;
+
+    this.dailyData.challenge = Math.floor(Math.random() * this.length.challenge);
+    this.dailyData.blog = Math.floor(Math.random() * this.length.blog);
+    this.dailyData.ressourcium = Math.floor(Math.random() * this.length.ressourcium);
   }
 
   selectDoing(choice) {

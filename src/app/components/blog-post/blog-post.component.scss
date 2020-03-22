@@ -1,8 +1,11 @@
 .blogPostWrapper {
+  border-radius: 1em;
   .headerImg {
     width: 100%;
     height: 20em;
     overflow: hidden;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
     img {
       width: 100%;
       height: 100%;
@@ -15,11 +18,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 1em 0;
+    margin: 1em;
+  }
+  .contentSection {
+    margin: 1em;
   }
 
   .sources {
     display: flex;
     justify-content: center;
+    margin: 1em;
+    padding: 1em;
   }
 }

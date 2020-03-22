@@ -1,7 +1,10 @@
 nav {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  // grid-template-columns: 1fr 1fr;
   padding: 1em;
+
+  // background-image: linear-gradient(#ff8900, #ffc077);
+  border-bottom: 2px solid #ff8900;
 
   .left {
     display: inline-flex;
@@ -21,6 +24,7 @@ nav {
     .menuItem {
       margin: 0 1em;
       text-decoration: none;
+      border-bottom: 1px solid #ff8900;
     }
   }
 
@@ -58,6 +62,8 @@ nav {
     display: inline-flex;
     justify-content: center;
     align-items: flex-end;
+    animation: 20s 6s rotateImg infinite;
+
     #Layer_1 {
       height: 100%;
       width: auto;
@@ -94,7 +100,8 @@ nav {
     .menuItem {
       margin: 0 1em;
       text-decoration: none;
-      color: #000;
+      color: #122eb3;
+      border-bottom: 1px solid #ff8900;
     }
   }
   .social {
@@ -103,4 +110,21 @@ nav {
     top: 0;
     right: 0;
   }
+}
+
+@keyframes rotateImg {
+  0% {
+    transform: rotate(360deg);
+  }
+  5% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+path,
+circle {
+  // fill: #fff;
 }
